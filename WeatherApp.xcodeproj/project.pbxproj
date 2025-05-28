@@ -15,9 +15,6 @@
 		A81D37712DE76B4C00E17A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81D37602DE76B4C00E17A42 /* AppDelegate.swift */; };
 		A81D37722DE76B4C00E17A42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81D37682DE76B4C00E17A42 /* SceneDelegate.swift */; };
 		A81D37732DE76B4C00E17A42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81D37692DE76B4C00E17A42 /* ViewController.swift */; };
-		A81D37762DE77DB800E17A42 /* Base.sample.xcconfig in Sources */ = {isa = PBXBuildFile; fileRef = A81D37752DE77DA800E17A42 /* Base.sample.xcconfig */; };
-		A81D37792DE77E5200E17A42 /* Debug.sample.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A81D37782DE77E4100E17A42 /* Debug.sample.xcconfig */; };
-		A81D377B2DE77EF200E17A42 /* Release.sample.xcconfig in Sources */ = {isa = PBXBuildFile; fileRef = A81D377A2DE77EDF00E17A42 /* Release.sample.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,13 +63,13 @@
 		A81D376A2DE76B4C00E17A42 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				A81D37602DE76B4C00E17A42 /* AppDelegate.swift */,
-				A81D37612DE76B4C00E17A42 /* Assets.xcassets */,
+				A81D377D2DE785D400E17A42 /* App */,
 				A81D37742DE76B5A00E17A42 /* SupportingFiles */,
-				A81D37642DE76B4C00E17A42 /* Info.plist */,
-				A81D37662DE76B4C00E17A42 /* LaunchScreen.storyboard */,
-				A81D37682DE76B4C00E17A42 /* SceneDelegate.swift */,
-				A81D37692DE76B4C00E17A42 /* ViewController.swift */,
+				A81D377E2DE7887800E17A42 /* Core */,
+				A81D37822DE788DF00E17A42 /* Features */,
+				A81D378C2DE7898D00E17A42 /* Utils */,
+				A81D37882DE7895600E17A42 /* Tests */,
+				A81D377C2DE785A100E17A42 /* Resources */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -86,8 +83,144 @@
 				A81D37782DE77E4100E17A42 /* Debug.sample.xcconfig */,
 				A81D37672DE76B4C00E17A42 /* Release.xcconfig */,
 				A81D377A2DE77EDF00E17A42 /* Release.sample.xcconfig */,
+				A81D37642DE76B4C00E17A42 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A81D377C2DE785A100E17A42 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A81D37612DE76B4C00E17A42 /* Assets.xcassets */,
+				A81D37662DE76B4C00E17A42 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A81D377D2DE785D400E17A42 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A81D37602DE76B4C00E17A42 /* AppDelegate.swift */,
+				A81D37682DE76B4C00E17A42 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A81D377E2DE7887800E17A42 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A81D377F2DE7889000E17A42 /* Network */,
+				A81D37802DE788AA00E17A42 /* Cache */,
+				A81D37812DE788B500E17A42 /* Models */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A81D377F2DE7889000E17A42 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A81D37802DE788AA00E17A42 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		A81D37812DE788B500E17A42 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A81D37822DE788DF00E17A42 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A81D37832DE7891C00E17A42 /* Forecast */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A81D37832DE7891C00E17A42 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				A81D37842DE7892500E17A42 /* Coordinator */,
+				A81D37852DE7892E00E17A42 /* ViewModel */,
+				A81D37862DE7893600E17A42 /* View */,
+				A81D37872DE7893E00E17A42 /* Resources */,
+			);
+			path = Forecast;
+			sourceTree = "<group>";
+		};
+		A81D37842DE7892500E17A42 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A81D37852DE7892E00E17A42 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A81D37862DE7893600E17A42 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A81D37692DE76B4C00E17A42 /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A81D37872DE7893E00E17A42 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A81D37882DE7895600E17A42 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A81D378B2DE7897D00E17A42 /* CoreTests */,
+				A81D378A2DE7897500E17A42 /* ForecastTests */,
+				A81D37892DE7896800E17A42 /* TestUtils */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A81D37892DE7896800E17A42 /* TestUtils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TestUtils;
+			sourceTree = "<group>";
+		};
+		A81D378A2DE7897500E17A42 /* ForecastTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ForecastTests;
+			sourceTree = "<group>";
+		};
+		A81D378B2DE7897D00E17A42 /* CoreTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreTests;
+			sourceTree = "<group>";
+		};
+		A81D378C2DE7898D00E17A42 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +285,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A81D376B2DE76B4C00E17A42 /* Assets.xcassets in Resources */,
-				A81D37792DE77E5200E17A42 /* Debug.sample.xcconfig in Resources */,
 				A81D376C2DE76B4C00E17A42 /* Base.xcconfig in Resources */,
 				A81D376D2DE76B4C00E17A42 /* Debug.xcconfig in Resources */,
 				A81D376F2DE76B4C00E17A42 /* LaunchScreen.storyboard in Resources */,
@@ -169,9 +301,7 @@
 			files = (
 				A81D37712DE76B4C00E17A42 /* AppDelegate.swift in Sources */,
 				A81D37722DE76B4C00E17A42 /* SceneDelegate.swift in Sources */,
-				A81D377B2DE77EF200E17A42 /* Release.sample.xcconfig in Sources */,
 				A81D37732DE76B4C00E17A42 /* ViewController.swift in Sources */,
-				A81D37762DE77DB800E17A42 /* Base.sample.xcconfig in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +329,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GBTTU32HS2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = WeatherApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -233,7 +363,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GBTTU32HS2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = WeatherApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
