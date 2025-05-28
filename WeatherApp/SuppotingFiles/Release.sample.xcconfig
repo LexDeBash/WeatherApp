@@ -1,0 +1,9 @@
+//
+//  Release.sample.xcconfig.swift
+//  WeatherApp
+//
+//  Created by Alexey Efimov on 28.05.2025.
+//
+
+#include "Base.xcconfig"
+SWIFT_OPTIMIZATION_LEVEL = -Owholemodule

@@ -1,0 +1,172 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# VS Code
+.vscode/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Local history for JetBrains IDEs
+.localhistory/
+
+# Xcode
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+*.xcuserdatad/
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.xcassets
+*.xcuserstate
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcshareddata/WorkspaceSettings.xcsettings
+*.xcodeproj/xcshareddata/IDEWorkspaceChecks.plist
+*.xcconfig
+!*.sample.xcconfig
+
+# Swift Package Manager
+.build/
+.swiftpm/xcode/package.xcworkspace/
+.swiftpm/xcode/xcshareddata/
+.swiftpm/xcode/xcuserdata/
+
+# Derived data
+DerivedData/
+.idea/
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# SwiftPM
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Archives
+*.xcarchive
+
+# App data
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Simulator logs
+coredata.sql
+coredata.sqlite
+coredata.sqlite-shm
+coredata.sqlite-wal
+
+# Provisioning profiles
+*.mobileprovision
+
+# Crashlytics
+crashlytics-build.properties
+
+# Firebase
+GoogleService-Info.plist
+

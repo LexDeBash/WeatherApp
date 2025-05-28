@@ -1,0 +1,11 @@
+//
+//  Debug.sample.xcconfig
+//  WeatherApp
+//
+//  Created by Alexey Efimov on 28.05.2025.
+//
+
+#include "Base.xcconfig"
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+

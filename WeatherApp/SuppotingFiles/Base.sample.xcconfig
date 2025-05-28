@@ -1,0 +1,10 @@
+//
+//  Base.sample.xcconfig
+//  WeatherApp
+//
+//  Created by Alexey Efimov on 28.05.2025.
+//
+
+PRODUCT_BUNDLE_IDENTIFIER = org.swiftbook.WeatherApp
+WEATHER_API_KEY = "INSERT_KEY_HERE"
+
