@@ -44,7 +44,10 @@ extension WeatherService: WeatherServiceProtocol {
         }
         
         do {
-            return = try JSONDecoder().decode(ForecastResponse.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let forecastResponse = try decoder.decode(ForecastResponse.self, from: data)
+            return forecastResponse
         } catch {
             throw WeatherAPIError.decodingFailed(error)
         }
