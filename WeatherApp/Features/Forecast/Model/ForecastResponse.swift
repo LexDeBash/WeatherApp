@@ -12,19 +12,41 @@ struct ForecastResponse: Decodable {
 }
 
 struct Forecast: Decodable {
-    let forecastDay: [ForecastDay]
+    let days: [ForecastDay]
+}
+
+private extension Forecast {
+    enum CodingKeys: String, CodingKey {
+        case days = "forecastday"
+    }
 }
 
 struct ForecastDay: Decodable {
     let date: String
-    let day: DayForecast
+    let dayForecast: DayForecast
+}
+
+private extension ForecastDay {
+    enum CodingKeys: String, CodingKey {
+        case date
+        case dayForecast = "day"
+    }
 }
 
 struct DayForecast: Decodable {
-    let avgtempC: Double
-    let maxwindKph: Double
-    let avghumidity: Double
+    let averageTemperature: Double
+    let maxWindSpeed: Double
+    let averageHumidity: Double
     let condition: WeatherCondition
+}
+
+private extension DayForecast {
+    enum CodingKeys: String, CodingKey {
+        case averageTemperature = "avgtemp_c"
+        case maxWindSpeed = "maxwind_kph"
+        case averageHumidity = "avghumidity"
+        case condition
+    }
 }
 
 struct WeatherCondition: Decodable {

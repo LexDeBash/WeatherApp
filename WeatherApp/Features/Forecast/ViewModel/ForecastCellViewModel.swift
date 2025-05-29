@@ -37,19 +37,19 @@ struct ForecastCellViewModel {
         dateText = Date.formattedForecastDate(from: model.date)
 
         // Текстовое описание погодных условий
-        conditionText = model.day.condition.text
+        conditionText = model.dayForecast.condition.text
 
         // URL иконки погодных условий
-        iconURL = URL(string: "https:\(model.day.condition.icon)")
+        iconURL = URL(string: "https:\(model.dayForecast.condition.icon)")
 
         // Средняя температура с единицами
-        avgTemperatureText = String(format: "%.0f°C", model.day.avgtempC)
+        avgTemperatureText = String(format: "%.0f°C", model.dayForecast.averageTemperature)
 
         // Скорость ветра с единицами
-        windSpeedText = String(format: "%.1f км/ч", model.day.maxwindKph)
+        windSpeedText = String(format: "%.1f км/ч", model.dayForecast.maxWindSpeed)
 
         // Влажность с единицами
-        humidityText = String(format: "%d%%", model.day.avghumidity)
+        humidityText = String(format: "%d%%", model.dayForecast.averageHumidity)
     }
 }
 
