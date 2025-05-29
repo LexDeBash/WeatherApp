@@ -7,24 +7,51 @@
 
 import Foundation
 
+/// ViewModel для отображения прогноза в ячейке таблицы.
 struct ForecastCellViewModel {
-    let date: String
-    let description: String
+
+    // MARK: - Public Properties
+    /// Отформатированная дата (например, "Чт, 29 мая")
+    let dateText: String
+
+    /// Описание погодного условия
+    let conditionText: String
+
+    /// URL иконки погодного условия
     let iconURL: URL?
-    let averageTemperature: String
-    let windSpeed: String
-    let humidity: String
-    
+
+    /// Отображаемая средняя температура с единицами (например, "23°C")
+    let avgTemperatureText: String
+
+    /// Отображаемая скорость ветра с единицами (например, "15.2 км/ч")
+    let windSpeedText: String
+
+    /// Отображаемая влажность с единицами (например, "60%")
+    let humidityText: String
+
+    // MARK: - Initializer
+    /// Создает ViewModel из модели `ForecastDay` из сетевого слоя
+    /// - Parameter model: Модель прогноза для одного дня
     init(from model: ForecastDay) {
-        // Пример: "2025-05-29" → "Чт, 29 мая"
-        date = DateFormatter.dayLabel.string(from: model.date)
-        
-        description = model.day.condition.text
-        
+        // Парсим и форматируем дату через Date расширение
+        dateText = Date.formattedForecastDate(from: model.date)
+
+        // Текстовое описание погодных условий
+        conditionText = model.day.condition.text
+
+        // URL иконки погодных условий
         iconURL = URL(string: "https:\(model.day.condition.icon)")
-        
-        averageTemperature = "\(Int(round(model.day.avgtempC)))°C"
-        windSpeed = "\(Int(round(model.day.maxwindKph))) км/ч"
-        humidity = "\(Int(round(model.day.avghumidity))) %"
+
+        // Средняя температура с единицами
+        avgTemperatureText = String(format: "%.0f°C", model.day.avgtempC)
+
+        // Скорость ветра с единицами
+        windSpeedText = String(format: "%.1f км/ч", model.day.maxwindKph)
+
+        // Влажность с единицами
+        humidityText = String(format: "%d%%", model.day.avghumidity)
     }
 }
+
+
+
