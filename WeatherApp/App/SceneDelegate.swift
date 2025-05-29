@@ -14,9 +14,15 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let apiKey = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String
+        let urlSession = URLSession.shared
+        let weatherService: WeatherServiceProtocol = WeatherService(apiKey: apiKey ?? "", session: urlSession)
+        let forecastVM: ForecastViewModelProtocol = ForecastViewModel(service: weatherService)
+        let forecastVC = ForecastViewController(viewModel: forecastVM)
+        
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        window?.rootViewController = UINavigationController(rootViewController: forecastVC)
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
