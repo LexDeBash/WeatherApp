@@ -83,18 +83,18 @@
 		A81D376A2DE76B4C00E17A42 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				A81D37742DE76B5A00E17A42 /* Config */,
 				A81D377D2DE785D400E17A42 /* App */,
-				A81D37742DE76B5A00E17A42 /* SupportingFiles */,
 				A81D377E2DE7887800E17A42 /* Core */,
 				A81D37822DE788DF00E17A42 /* Features */,
 				A81D378C2DE7898D00E17A42 /* Utils */,
-				A81D37882DE7895600E17A42 /* Tests */,
 				A81D377C2DE785A100E17A42 /* Resources */,
+				A81D37882DE7895600E17A42 /* Tests */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
 		};
-		A81D37742DE76B5A00E17A42 /* SupportingFiles */ = {
+		A81D37742DE76B5A00E17A42 /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				A81D37622DE76B4C00E17A42 /* Base.xcconfig */,
@@ -105,7 +105,7 @@
 				A81D377A2DE77EDF00E17A42 /* Release.sample.xcconfig */,
 				A81D37642DE76B4C00E17A42 /* Info.plist */,
 			);
-			path = SupportingFiles;
+			path = Config;
 			sourceTree = "<group>";
 		};
 		A81D377C2DE785A100E17A42 /* Resources */ = {
@@ -131,7 +131,7 @@
 			children = (
 				A81D377F2DE7889000E17A42 /* Network */,
 				A81D37802DE788AA00E17A42 /* Cache */,
-				A81D37812DE788B500E17A42 /* Models */,
+				A86108382DE8AF0500C67505 /* Model */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -154,12 +154,12 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
-		A81D37812DE788B500E17A42 /* Models */ = {
+		A81D37812DE788B500E17A42 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A81D37952DE7B7A500E17A42 /* ForecastResponse.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A81D37822DE788DF00E17A42 /* Features */ = {
@@ -173,9 +173,11 @@
 		A81D37832DE7891C00E17A42 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
-				A81D37842DE7892500E17A42 /* Coordinator */,
+				A81D37812DE788B500E17A42 /* Model */,
 				A81D37852DE7892E00E17A42 /* ViewModel */,
 				A81D37862DE7893600E17A42 /* View */,
+				A86108372DE8ACC500C67505 /* ViewController */,
+				A81D37842DE7892500E17A42 /* Coordinator */,
 				A81D37872DE7893E00E17A42 /* Resources */,
 			);
 			path = Forecast;
@@ -202,7 +204,6 @@
 		A81D37862DE7893600E17A42 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A81D37692DE76B4C00E17A42 /* ViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +252,21 @@
 				A861082F2DE890CD00C67505 /* DateFormatter+Forecast.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A86108372DE8ACC500C67505 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A81D37692DE76B4C00E17A42 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A86108382DE8AF0500C67505 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,7 +385,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GBTTU32HS2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherApp/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = WeatherApp/Config/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -403,7 +419,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GBTTU32HS2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherApp/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = WeatherApp/Config/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
