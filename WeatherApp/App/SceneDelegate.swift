@@ -14,9 +14,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let apiKey = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String, !apiKey.isEmpty else {
+            fatalError("Missing WEATHER_API_KEY in Info.plist")
+        }
         let urlSession = URLSession.shared
-        let weatherService: WeatherServiceProtocol = WeatherService(apiKey: apiKey ?? "", session: urlSession)
+        let weatherService: WeatherServiceProtocol = WeatherService(apiKey: apiKey, session: urlSession)
         let forecastVM: ForecastViewModelProtocol = ForecastViewModel(service: weatherService)
         let forecastVC = ForecastViewController(viewModel: forecastVM)
         
