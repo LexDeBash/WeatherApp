@@ -15,18 +15,29 @@ final class WeatherService {
     // MARK: - Dependencies
     private let session: URLSession
     private let imageCache: ImageCacheProtocol
+    private let forecastCache: ForecastCacheProtocol
     
     // MARK: - Initializers
-    init(apiKey: String, session: URLSession, imageCache: ImageCacheProtocol) {
+    init(
+        apiKey: String,
+        session: URLSession,
+        imageCache: ImageCacheProtocol,
+        forecastCache: ForecastCacheProtocol
+    ) {
         self.apiKey = apiKey
         self.session = session
         self.imageCache = imageCache
+        self.forecastCache = forecastCache
     }
 }
 
 // MARK: - WeatherServiceProtocol
 extension WeatherService: WeatherServiceProtocol {
     func fetchForecast(for city: String, days: Int) async throws -> ForecastResponse {
+        if let cachedForecast = forecastCache.forecast(for: city) {
+            return cachedForecast
+        }
+        
         guard (1...10).contains(days) else {
             throw WeatherAPIError.invalidDayRange
         }
@@ -41,7 +52,9 @@ extension WeatherService: WeatherServiceProtocol {
         try validateResponse(response)
         
         do {
-            return try JSONDecoder().decode(ForecastResponse.self, from: data)
+            let forecastResponse = try JSONDecoder().decode(ForecastResponse.self, from: data)
+            forecastCache.set(forecastResponse, for: city)
+            return forecastResponse
         } catch {
             throw WeatherAPIError.decodingFailed(error)
         }

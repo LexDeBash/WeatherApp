@@ -19,7 +19,13 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         let urlSession = URLSession.shared
         let imageCache: ImageCacheProtocol = ImageCache.shared
-        let weatherService: WeatherServiceProtocol = WeatherService(apiKey: apiKey, session: urlSession, imageCache: imageCache)
+        let forecastCache = ForecastCache()
+        let weatherService: WeatherServiceProtocol = WeatherService(
+            apiKey: apiKey,
+            session: urlSession,
+            imageCache: imageCache,
+            forecastCache: forecastCache
+        )
         let forecastVM: ForecastViewModelProtocol = ForecastViewModel(service: weatherService)
         let forecastVC = ForecastViewController(viewModel: forecastVM)
         
