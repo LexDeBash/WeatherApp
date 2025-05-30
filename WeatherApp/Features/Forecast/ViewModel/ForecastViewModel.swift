@@ -24,10 +24,10 @@ final class ForecastViewModel: ForecastViewModelProtocol {
     // MARK: - Private Properties
     private var forecastItems: [ForecastCellViewModel] = []
     
-    /// Текущая задача загрузки прогноза, чтобы отменять предыдущий запрос
+    // Текущая задача загрузки прогноза, чтобы отменять предыдущий запрос
     private var currentFetchTask: Task<[ForecastCellViewModel], Error>?
 
-    /// Последний успешный набор элементов прогноза для offline-режима
+    // Последний успешный набор элементов прогноза для offline-режима
     private var lastSuccessfulItems: [ForecastCellViewModel] = []
     
     // MARK: - Initializers

@@ -144,7 +144,6 @@
 			children = (
 				A81D377F2DE7889000E17A42 /* Network */,
 				A81D37802DE788AA00E17A42 /* Cache */,
-				A86108382DE8AF0500C67505 /* Model */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -268,13 +267,6 @@
 				A81D37692DE76B4C00E17A42 /* ForecastViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		A86108382DE8AF0500C67505 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		A86108392DE8C32400C67505 /* Cells */ = {
