@@ -12,17 +12,15 @@ final class ForecastViewController: UIViewController {
     // MARK: - UI Components
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemBackground
         tableView.separatorStyle = .none
-        return tableView
+        return tableView.preparedForAutoLayout()
     }()
     
     private let activityIndicator: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
-        return spinner
+        return spinner.preparedForAutoLayout()
     }()
     
     private let refreshControl = UIRefreshControl()
@@ -73,6 +71,7 @@ extension ForecastViewController: UITableViewDataSource {
         }
         
         let cellViewModel = viewModel.cellViewModel(at: indexPath.row)
+        
         cell.configure(with: cellViewModel) { [weak self] url in
             guard let self else { throw CancellationError() }
             return try await viewModel.loadImage(for: url)
