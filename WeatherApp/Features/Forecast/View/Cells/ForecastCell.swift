@@ -63,7 +63,7 @@ final class ForecastCell: UITableViewCell {
 extension ForecastCell {
     /// Настраивает ячейку на основе ViewModel
     /// - Parameter viewModel: Модель представления ячейки прогноза
-    func configure(with viewModel: ForecastCellViewModel) {
+    func configure(with viewModel: ForecastCellViewModel, onLoadImageData: @escaping (URL) async throws -> Data) {
         dateLabel.text = viewModel.date
         conditionLabel.text = viewModel.condition
         temperatureLabel.text = viewModel.averageTemperature
@@ -72,9 +72,10 @@ extension ForecastCell {
         
         iconLoadTask = Task {
             do {
-                let imageData = try await viewModel.loadIcon()
+                guard let url = viewModel.iconURL else { return }
+                let data = try await onLoadImageData(url)
                 guard !Task.isCancelled else { return }
-                iconImageView.image = UIImage(data: imageData)
+                iconImageView.image = UIImage(data: data)
             } catch {
                 iconImageView.image = UIImage(systemName: "photo")
                 iconImageView.tintColor = .tertiaryLabel

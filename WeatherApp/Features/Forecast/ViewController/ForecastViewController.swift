@@ -73,7 +73,10 @@ extension ForecastViewController: UITableViewDataSource {
         }
         
         let cellViewModel = viewModel.cellViewModel(at: indexPath.row)
-        cell.configure(with: cellViewModel)
+        cell.configure(with: cellViewModel) { [weak self] url in
+            guard let self else { throw CancellationError() }
+            return try await viewModel.loadImage(for: url)
+        }
         
         return cell
     }
