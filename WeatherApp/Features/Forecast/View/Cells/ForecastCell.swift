@@ -38,7 +38,7 @@ final class ForecastCell: UITableViewCell {
     }()
     
     // MARK: - Private Properties
-    private var currentIconTask: Task<Void, Never>?
+    private var iconLoadTask: Task<Void, Never>?
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -54,53 +54,43 @@ final class ForecastCell: UITableViewCell {
     // MARK: - Lifecycle
     override func prepareForReuse() {
         super.prepareForReuse()
-        currentIconTask?.cancel()
+        iconLoadTask?.cancel()
         iconImageView.image = nil
-    }
-    
-    // MARK: - Icon Loading
-    
-    private func loadIcon(from url: URL?) {
-        currentIconTask?.cancel()
-        iconImageView.image = nil
-        
-        guard let url = url else { return }
-        
-        currentIconTask = Task { @MainActor in
-            do {
-                // TODO: - работа с кешем
-            } catch {
-                // Игнорируем ошибки загрузки и оставляем placeholder
-            }
-        }
     }
 }
 
-// MARK: - Setup UI
+// MARK: - Configuration
 extension ForecastCell {
     /// Настраивает ячейку на основе ViewModel
     /// - Parameter viewModel: Модель представления ячейки прогноза
     func configure(with viewModel: ForecastCellViewModel) {
-        dateLabel.text = viewModel.dateText
-        conditionLabel.text = viewModel.conditionText
-        temperatureLabel.text = viewModel.avgTemperatureText
-        windSpeedLabel.text = viewModel.windSpeedText
-        humidityLabel.text = viewModel.humidityText
-        loadIcon(from: viewModel.iconURL)
+        dateLabel.text = viewModel.date
+        conditionLabel.text = viewModel.condition
+        temperatureLabel.text = viewModel.averageTemperature
+        windSpeedLabel.text = viewModel.windSpeed
+        humidityLabel.text = viewModel.humidity
+        
+        iconLoadTask = Task {
+            do {
+                let imageData = try await viewModel.loadIcon()
+                guard !Task.isCancelled else { return }
+                iconImageView.image = UIImage(data: imageData)
+            } catch {
+                iconImageView.image = UIImage(systemName: "photo")
+                iconImageView.tintColor = .tertiaryLabel
+            }
+        }
     }
 }
 
 // MARK: - Layout
 private extension ForecastCell {
     func configureLayout() {
-        add(subviews: dateLabel, iconImageView, textStackView)
-        setupConstraints()
-    }
-    
-    func add(subviews: UIView...) {
-        subviews.forEach {
+        [dateLabel, iconImageView, textStackView].forEach {
             contentView.addSubview($0)
         }
+        
+        setupConstraints()
     }
     
     func setupConstraints() {
@@ -117,11 +107,12 @@ private extension ForecastCell {
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
             iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
             
-            textStackView.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
+            textStackView.topAnchor.constraint(equalTo: iconImageView.topAnchor),
             textStackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: spacing),
             textStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -spacing),
             
-            contentView.bottomAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: spacing)
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: spacing),
+            contentView.bottomAnchor.constraint(equalTo: textStackView.bottomAnchor, constant: spacing)
         ])
     }
 }

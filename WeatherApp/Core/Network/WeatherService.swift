@@ -34,19 +34,31 @@ extension WeatherService: WeatherServiceProtocol {
         }
         
         let (data, response) = try await session.data(from: url)
+        try validateResponse(response)
         
+        do {
+            return try JSONDecoder().decode(ForecastResponse.self, from: data)
+        } catch {
+            throw WeatherAPIError.decodingFailed(error)
+        }
+    }
+    
+    func fetchImageData(from url: URL) async throws -> Data {
+        let (data, response) = try await session.data(from: url)
+        try validateResponse(response)
+        return data
+    }
+}
+
+// MARK: - Private Methods
+extension WeatherService {
+    private func validateResponse(_ response: URLResponse) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw WeatherAPIError.invalidResponse
         }
         
         guard (200...299).contains(httpResponse.statusCode) else {
             throw WeatherAPIError.httpStatus(httpResponse.statusCode)
-        }
-        
-        do {
-            return try JSONDecoder().decode(ForecastResponse.self, from: data)
-        } catch {
-            throw WeatherAPIError.decodingFailed(error)
         }
     }
 }

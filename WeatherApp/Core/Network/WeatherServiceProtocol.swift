@@ -15,6 +15,11 @@ protocol WeatherServiceProtocol {
     ///   - days: Количество дней (максимум 10, минимум 1)
     /// - Returns: Модель прогноза (`ForecastResponse`)
     func fetchForecast(for city: String, days: Int) async throws -> ForecastResponse
+    
+    /// Загружает данные изображения (например, иконки) по URL.
+    /// - Parameter url: URL изображения.
+    /// - Returns: `Data` с содержимым картинки.
+    func fetchImageData(from url: URL) async throws -> Data
 }
 
 extension WeatherServiceProtocol {

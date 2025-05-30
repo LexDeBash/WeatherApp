@@ -11,45 +11,46 @@ import Foundation
 struct ForecastCellViewModel {
 
     // MARK: - Public Properties
-    /// Отформатированная дата (например, "Чт, 29 мая")
-    let dateText: String
+    /// Локализованная дата
+    let date: String
 
-    /// Описание погодного условия
-    let conditionText: String
+    /// Погодные условия
+    let condition: String
 
-    /// URL иконки погодного условия
-    let iconURL: URL?
+    /// Средняя температура в градусах Цельсия
+    let averageTemperature: String
 
-    /// Отображаемая средняя температура с единицами (например, "23°C")
-    let avgTemperatureText: String
+    /// Скорость ветра км/ч
+    let windSpeed: String
 
-    /// Отображаемая скорость ветра с единицами (например, "15.2 км/ч")
-    let windSpeedText: String
-
-    /// Отображаемая влажность с единицами (например, "60%")
-    let humidityText: String
+    /// Влажность в процентах
+    let humidity: String
+    
+    // MARK: - Private Properties
+    private let iconURL: String
+    
+    // MARK: - Dependencies
+    private let service: WeatherServiceProtocol
 
     // MARK: - Initializer
     /// Создает ViewModel из модели `ForecastDay` из сетевого слоя
-    /// - Parameter model: Модель прогноза для одного дня
-    init(from model: ForecastDay) {
-        // Парсим и форматируем дату через Date расширение
-        dateText = Date.formattedForecastDate(from: model.date)
-
-        // Текстовое описание погодных условий
-        conditionText = model.dayForecast.condition.text
-
-        // URL иконки погодных условий
-        iconURL = URL(string: "https:\(model.dayForecast.condition.icon)")
-
-        // Средняя температура с единицами
-        avgTemperatureText = String(format: "%.0f°C", model.dayForecast.averageTemperature)
-
-        // Скорость ветра с единицами
-        windSpeedText = String(format: "%.1f км/ч", model.dayForecast.maxWindSpeed)
-
-        // Влажность с единицами
-        humidityText = String(format: "%d%%", model.dayForecast.averageHumidity)
+    /// - Parameter forecastDay: Модель прогноза для одного дня
+    init(from forecastDay: ForecastDay, with service: WeatherServiceProtocol) {
+        date = Date.formattedForecastDate(from: forecastDay.date)
+        condition = forecastDay.dayForecast.condition.text
+        averageTemperature = String(format: "%.0f°C", forecastDay.dayForecast.averageTemperature)
+        windSpeed = String(format: "Wind speed: %.1f км/ч", forecastDay.dayForecast.maxWindSpeed)
+        humidity = String(format: "Humidity: %d%%", forecastDay.dayForecast.averageHumidity)
+        iconURL = forecastDay.dayForecast.condition.icon
+        self.service = service
+    }
+    
+    func loadIcon() async throws -> Data {
+        guard let url = WeatherAPIEndpoint.conditionIcon(path: iconURL).url(with: "") else {
+            throw WeatherAPIError.invalidURL
+        }
+        
+        return try await service.fetchImageData(from: url)
     }
 }
 
