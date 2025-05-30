@@ -15,7 +15,7 @@ final class ForecastCell: UITableViewCell {
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        return imageView.withoutAutoresizingMask()
+        return imageView.preparedForAutoLayout()
     }()
     
     private let conditionLabel = ForecastCell.makeLabel(style: .body, lines: 0)
@@ -34,7 +34,7 @@ final class ForecastCell: UITableViewCell {
         )
         stack.axis = .vertical
         stack.spacing = Metrics.Layout.spacing
-        return stack.withoutAutoresizingMask()
+        return stack.preparedForAutoLayout()
     }()
     
     // MARK: - Private Properties
@@ -47,8 +47,9 @@ final class ForecastCell: UITableViewCell {
         configureLayout()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
     
     // MARK: - Lifecycle
@@ -125,15 +126,6 @@ private extension ForecastCell {
         label.font = .preferredFont(forTextStyle: style)
         label.textColor = color
         label.numberOfLines = lines
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }
-}
-
-private extension UIView {
-    /// Возвращает представление с отключенным флагом Autoresizing Mask.
-    func withoutAutoresizingMask() -> Self {
-        translatesAutoresizingMaskIntoConstraints = false
-        return self
+        return label.preparedForAutoLayout()
     }
 }
