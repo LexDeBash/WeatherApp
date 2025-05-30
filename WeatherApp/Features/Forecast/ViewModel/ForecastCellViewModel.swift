@@ -26,33 +26,18 @@ struct ForecastCellViewModel {
     /// Влажность в процентах
     let humidity: String
     
-    // MARK: - Private Properties
-    private let iconURL: String
-    
-    // MARK: - Dependencies
-    private let service: WeatherServiceProtocol
+    /// URL адрес иконки погодных условий
+    let iconURL: URL?
 
     // MARK: - Initializer
     /// Создает ViewModel из модели `ForecastDay` из сетевого слоя
     /// - Parameter forecastDay: Модель прогноза для одного дня
-    init(from forecastDay: ForecastDay, with service: WeatherServiceProtocol) {
+    init(from forecastDay: ForecastDay) {
         date = Date.formattedForecastDate(from: forecastDay.date)
         condition = forecastDay.dayForecast.condition.text
         averageTemperature = String(format: "%.0f°C", forecastDay.dayForecast.averageTemperature)
         windSpeed = String(format: "Wind speed: %.1f км/ч", forecastDay.dayForecast.maxWindSpeed)
         humidity = String(format: "Humidity: %d%%", forecastDay.dayForecast.averageHumidity)
-        iconURL = forecastDay.dayForecast.condition.icon
-        self.service = service
-    }
-    
-    func loadIcon() async throws -> Data {
-        guard let url = WeatherAPIEndpoint.conditionIcon(path: iconURL).url(with: "") else {
-            throw WeatherAPIError.invalidURL
-        }
-        
-        return try await service.fetchImageData(from: url)
+        iconURL = URL(string: "https:\(forecastDay.dayForecast.condition.icon)")
     }
 }
-
-
-

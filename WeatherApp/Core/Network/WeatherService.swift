@@ -11,12 +11,16 @@ import Foundation
 final class WeatherService {
     // MARK: - Private Properties
     private let apiKey: String
+    
+    // MARK: - Dependencies
     private let session: URLSession
+    private let imageCache: ImageCacheProtocol
     
     // MARK: - Initializers
-    init(apiKey: String, session: URLSession) {
+    init(apiKey: String, session: URLSession, imageCache: ImageCacheProtocol) {
         self.apiKey = apiKey
         self.session = session
+        self.imageCache = imageCache
     }
 }
 
@@ -44,8 +48,15 @@ extension WeatherService: WeatherServiceProtocol {
     }
     
     func fetchImageData(from url: URL) async throws -> Data {
+        if let cachedImageData = imageCache.imageData(for: url) {
+            return cachedImageData
+        }
+        
         let (data, response) = try await session.data(from: url)
         try validateResponse(response)
+        
+        imageCache.storeImageData(data, for: url)
+        
         return data
     }
 }

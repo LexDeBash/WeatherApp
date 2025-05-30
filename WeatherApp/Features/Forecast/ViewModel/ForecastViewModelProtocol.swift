@@ -22,6 +22,11 @@ protocol ForecastViewModelProtocol: AnyObject {
     /// Загружает прогноз погоды для указанного города.
     /// - Parameter city: Название города (например, "Москва").
     func loadForecast(for city: String) async
+    
+    /// Загружает изображение по указанному URL (например, иконку прогноза).
+    /// - Parameter url: URL изображения.
+    /// - Returns: Двоичные данные изображения.
+    func loadImage(for url: URL) async throws -> Data
 
     /// Возвращает модель представления для отображения прогноза в ячейке.
     /// - Parameter index: Индекс дня в массиве прогноза.

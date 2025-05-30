@@ -9,7 +9,6 @@ import Foundation
 
 enum WeatherAPIEndpoint {
     case forecast(city: String, days: Int)
-    case conditionIcon(path: String)
     
     func url(with apiKey: String) -> URL? {
         switch self {
@@ -24,8 +23,6 @@ enum WeatherAPIEndpoint {
                 URLQueryItem(name: "key", value: apiKey)
             ]
             return components.url
-        case .conditionIcon(let path):
-            return URL(string: "https:\(path)")
         }
     }
 }

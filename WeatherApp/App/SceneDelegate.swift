@@ -18,7 +18,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Missing WEATHER_API_KEY in Info.plist")
         }
         let urlSession = URLSession.shared
-        let weatherService: WeatherServiceProtocol = WeatherService(apiKey: apiKey, session: urlSession)
+        let imageCache: ImageCacheProtocol = ImageCache.shared
+        let weatherService: WeatherServiceProtocol = WeatherService(apiKey: apiKey, session: urlSession, imageCache: imageCache)
         let forecastVM: ForecastViewModelProtocol = ForecastViewModel(service: weatherService)
         let forecastVC = ForecastViewController(viewModel: forecastVM)
         

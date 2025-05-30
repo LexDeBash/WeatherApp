@@ -48,7 +48,7 @@ extension ForecastViewModel {
             let response = try await service.fetchForecast(for: city)
             
             return response.forecast.days.map {
-                ForecastCellViewModel(from: $0, with: service)
+                ForecastCellViewModel(from: $0)
             }
         }
         
@@ -68,6 +68,10 @@ extension ForecastViewModel {
             let errorMessage = (error as? LocalizedError)?.errorDescription ?? "Неизвестная ошибка"
             onStateChanged?(.failed(errorMessage))
         }
+    }
+    
+    func loadImage(for url: URL) async throws -> Data {
+        try await service.fetchImageData(from: url)
     }
     
     func cellViewModel(at index: Int) -> ForecastCellViewModel {
