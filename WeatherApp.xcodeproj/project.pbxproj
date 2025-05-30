@@ -28,7 +28,6 @@
 		A861083B2DE8C33C00C67505 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A861083A2DE8C33C00C67505 /* ForecastCell.swift */; };
 		A86108462DE9064400C67505 /* UITableViewCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108452DE9064400C67505 /* UITableViewCell+ReuseIdentifier.swift */; };
 		A86108482DE90E6400C67505 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108472DE90E6400C67505 /* Metrics.swift */; };
-		A861084D2DE9268800C67505 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A861084C2DE9268800C67505 /* CacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +57,6 @@
 		A861083A2DE8C33C00C67505 /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
 		A86108452DE9064400C67505 /* UITableViewCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseIdentifier.swift"; sourceTree = "<group>"; };
 		A86108472DE90E6400C67505 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
-		A861084C2DE9268800C67505 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +157,6 @@
 		A81D37802DE788AA00E17A42 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				A861084C2DE9268800C67505 /* CacheManager.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -390,7 +387,6 @@
 				A81D37712DE76B4C00E17A42 /* AppDelegate.swift in Sources */,
 				A81D37722DE76B4C00E17A42 /* SceneDelegate.swift in Sources */,
 				A81D37942DE7B23E00E17A42 /* WeatherAPIEndpoint.swift in Sources */,
-				A861084D2DE9268800C67505 /* CacheManager.swift in Sources */,
 				A86108322DE891CE00C67505 /* ForecastViewModel.swift in Sources */,
 				A81D378E2DE7ACEF00E17A42 /* WeatherServiceProtocol.swift in Sources */,
 				A81D37732DE76B4C00E17A42 /* ForecastViewController.swift in Sources */,
