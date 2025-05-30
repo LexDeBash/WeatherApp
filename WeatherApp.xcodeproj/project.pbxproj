@@ -151,8 +151,8 @@
 		A81D377F2DE7889000E17A42 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A81D378D2DE7ACEF00E17A42 /* WeatherServiceProtocol.swift */,
 				A81D378F2DE7AEB000E17A42 /* WeatherService.swift */,
+				A81D378D2DE7ACEF00E17A42 /* WeatherServiceProtocol.swift */,
 				A81D37912DE7AFE000E17A42 /* WeatherAPIError.swift */,
 				A81D37932DE7B23E00E17A42 /* WeatherAPIEndpoint.swift */,
 			);
