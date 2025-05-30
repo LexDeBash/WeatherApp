@@ -46,8 +46,12 @@ extension ForecastViewModel {
         // Создаем новую задачу для загрузки прогноза, чтобы её можно было отменить
         let fetchTask = Task { () throws -> [ForecastCellViewModel] in
             let response = try await service.fetchForecast(for: city)
-            return response.forecast.days.map { ForecastCellViewModel(from: $0) }
+            
+            return response.forecast.days.map {
+                ForecastCellViewModel(from: $0, with: service)
+            }
         }
+        
         currentFetchTask = fetchTask
 
         do {

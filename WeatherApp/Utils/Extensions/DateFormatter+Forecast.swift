@@ -14,7 +14,7 @@ extension Date {
     static func formattedForecastDate(from source: String) -> String {
         // Создаём ISO8601‐парсер для полной даты с временем UTC
         let isoParser = ISO8601DateFormatter()
-        isoParser.formatOptions = [.withFullDate, .withTime]
+        isoParser.formatOptions = [.withFullDate]
         
         // Добавляем временную часть к дате API
         let isoString = source + "T00:00:00Z"
@@ -26,9 +26,10 @@ extension Date {
         
         // Формируем стиль вывода: сокращённый день недели, число и месяц
         let style = Date.FormatStyle()
-            .weekday(.short)
+            .weekday(.wide)
             .day(.defaultDigits)
             .month(.wide)
+            .locale(.current)
         
         return date.formatted(style)
     }
