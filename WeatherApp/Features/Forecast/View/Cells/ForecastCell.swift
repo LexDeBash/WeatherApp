@@ -47,8 +47,9 @@ final class ForecastCell: UITableViewCell {
         configureLayout()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
     
     // MARK: - Lifecycle
@@ -125,7 +126,6 @@ private extension ForecastCell {
         label.font = .preferredFont(forTextStyle: style)
         label.textColor = color
         label.numberOfLines = lines
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        return label.preparedForAutoLayout()
     }
 }
