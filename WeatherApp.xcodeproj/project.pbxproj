@@ -31,6 +31,8 @@
 		A861084F2DE9BF6A00C67505 /* ImageCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A861084E2DE9BF6A00C67505 /* ImageCacheProtocol.swift */; };
 		A86108512DE9BFB500C67505 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108502DE9BFB500C67505 /* ImageCache.swift */; };
 		A86108552DE9DE9B00C67505 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108542DE9DE9B00C67505 /* UIView+AutoLayout.swift */; };
+		A86108572DE9F7B600C67505 /* ForecastCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108562DE9F7B600C67505 /* ForecastCacheProtocol.swift */; };
+		A86108592DE9F7BF00C67505 /* ForecastCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108582DE9F7BF00C67505 /* ForecastCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		A861084E2DE9BF6A00C67505 /* ImageCacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheProtocol.swift; sourceTree = "<group>"; };
 		A86108502DE9BFB500C67505 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		A86108542DE9DE9B00C67505 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		A86108562DE9F7B600C67505 /* ForecastCacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCacheProtocol.swift; sourceTree = "<group>"; };
+		A86108582DE9F7BF00C67505 /* ForecastCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,8 @@
 		A81D37802DE788AA00E17A42 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				A86108582DE9F7BF00C67505 /* ForecastCache.swift */,
+				A86108562DE9F7B600C67505 /* ForecastCacheProtocol.swift */,
 				A86108502DE9BFB500C67505 /* ImageCache.swift */,
 				A861084E2DE9BF6A00C67505 /* ImageCacheProtocol.swift */,
 			);
@@ -378,6 +384,7 @@
 				A81D37902DE7AEB000E17A42 /* WeatherService.swift in Sources */,
 				A861083B2DE8C33C00C67505 /* ForecastCell.swift in Sources */,
 				A86108462DE9064400C67505 /* UITableViewCell+ReuseIdentifier.swift in Sources */,
+				A86108572DE9F7B600C67505 /* ForecastCacheProtocol.swift in Sources */,
 				A81D37712DE76B4C00E17A42 /* AppDelegate.swift in Sources */,
 				A81D37722DE76B4C00E17A42 /* SceneDelegate.swift in Sources */,
 				A81D37942DE7B23E00E17A42 /* WeatherAPIEndpoint.swift in Sources */,
@@ -388,6 +395,7 @@
 				A81D37922DE7AFE000E17A42 /* WeatherAPIError.swift in Sources */,
 				A81D37962DE7B7A500E17A42 /* ForecastResponse.swift in Sources */,
 				A86108342DE8935000C67505 /* ForecastViewModelProtocol.swift in Sources */,
+				A86108592DE9F7BF00C67505 /* ForecastCache.swift in Sources */,
 				A86108552DE9DE9B00C67505 /* UIView+AutoLayout.swift in Sources */,
 				A86108482DE90E6400C67505 /* Metrics.swift in Sources */,
 			);

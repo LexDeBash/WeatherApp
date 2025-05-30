@@ -55,18 +55,21 @@ extension ForecastViewModel {
         currentFetchTask = fetchTask
 
         do {
-            // Ожидаем завершения загрузки
             let items = try await fetchTask.value
-            // Сохраняем успешный результат
             forecastItems = items
             lastSuccessfulItems = items
             onStateChanged?(.loaded)
         } catch is CancellationError {
             // Если запрос был отменен, ничего не делаем
         } catch {
-            // При ошибке оставляем старые данные и уведомляем об ошибке
-            let errorMessage = (error as? LocalizedError)?.errorDescription ?? "Неизвестная ошибка"
-            onStateChanged?(.failed(errorMessage))
+            if !lastSuccessfulItems.isEmpty {
+                forecastItems = lastSuccessfulItems
+                onStateChanged?(.loaded)
+            } else {
+                // При ошибке оставляем старые данные и уведомляем об ошибке
+                let errorMessage = (error as? LocalizedError)?.errorDescription ?? "Неизвестная ошибка"
+                onStateChanged?(.failed(errorMessage))
+            }
         }
     }
     
