@@ -29,6 +29,9 @@ final class MockNetworkSession: NetworkSession {
     
     /// Ошибка, которую нужно бросить вместо успешного ответа (по умолчанию — `nil`)
     private let error: Error?
+
+    /// Сохраняет последний URL, переданный в data(from:)
+    private(set) var lastURL: URL?
     
     // MARK: - Initializer
     /// Инициализирует мок с заданными параметрами.
@@ -56,6 +59,7 @@ final class MockNetworkSession: NetworkSession {
     /// - Parameter url: URL, по которому выполняется запрос.
     /// - Returns: Кортеж `(Data, URLResponse)` или бросает ошибку, если задано `error`.
     func data(from url: URL) async throws -> (Data, URLResponse) {
+        lastURL = url
         if let error {
             throw error
         }
