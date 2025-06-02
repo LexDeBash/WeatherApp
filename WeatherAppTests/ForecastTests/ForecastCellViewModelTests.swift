@@ -12,7 +12,6 @@ import XCTest
 final class ForecastCellViewModelTests: XCTestCase {
     
     func test_init_setsFormattedValuesCorrectly() {
-        // Arrange
         let forecastDay = ForecastDay(
             date: "2025-06-01",
             dayForecast: DayForecast(
@@ -26,10 +25,8 @@ final class ForecastCellViewModelTests: XCTestCase {
             )
         )
         
-        // Act
         let viewModel = ForecastCellViewModel(from: forecastDay)
         
-        // Assert
         XCTAssertEqual(
             viewModel.date,
             Date.formattedForecastDate(from: "2025-06-01"),
@@ -43,7 +40,6 @@ final class ForecastCellViewModelTests: XCTestCase {
     }
     
     func test_iconURL_nil_whenIconIsEmpty() {
-        // Arrange
         let forecastDay = ForecastDay(
             date: "2025-06-01",
             dayForecast: DayForecast(
@@ -57,10 +53,45 @@ final class ForecastCellViewModelTests: XCTestCase {
             )
         )
         
-        // Act
         let viewModel = ForecastCellViewModel(from: forecastDay)
         
-        // Assert
         XCTAssertNil(viewModel.iconURL, "iconURL должен быть nil, если icon пустой")
+    }
+    func test_averageTemperature_roundsUp_whenFractionalPartIsFiveOrGreater() {
+        let forecastDay = ForecastDay(
+            date: "2025-06-02",
+            dayForecast: DayForecast(
+                averageTemperature: 17.6,
+                maxWindSpeed: 5.0,
+                averageHumidity: 40,
+                condition: WeatherCondition(
+                    text: "Cloudy",
+                    icon: "//cdn.weatherapi.com/weather/64x64/day/116.png"
+                )
+            )
+        )
+        
+        let viewModel = ForecastCellViewModel(from: forecastDay)
+        
+        XCTAssertEqual(viewModel.averageTemperature, "18°C", "Температура должна округляться вверх при дробной части >= 0.5")
+    }
+
+    func test_iconURL_nil_whenIconAlreadyHasScheme() {
+        let forecastDay = ForecastDay(
+            date: "2025-06-02",
+            dayForecast: DayForecast(
+                averageTemperature: 20.0,
+                maxWindSpeed: 5.0,
+                averageHumidity: 40,
+                condition: WeatherCondition(
+                    text: "Rainy",
+                    icon: "https://cdn.weatherapi.com/weather/64x64/day/302.png"
+                )
+            )
+        )
+        
+        let viewModel = ForecastCellViewModel(from: forecastDay)
+        
+        XCTAssertNil(viewModel.iconURL, "iconURL должен быть nil, если icon уже содержит полную схему URL")
     }
 }
