@@ -40,6 +40,7 @@
 		A86108B92DEB481F00C67505 /* MockNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108B02DEB481F00C67505 /* MockNetworkSession.swift */; };
 		A86108BA2DEB481F00C67505 /* forecast_sample.json in Resources */ = {isa = PBXBuildFile; fileRef = A86108B22DEB481F00C67505 /* forecast_sample.json */; };
 		A86108BC2DEB492900C67505 /* WeatherServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108BB2DEB492900C67505 /* WeatherServiceTests.swift */; };
+		A86108BE2DEDC5C400C67505 /* ForecastCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108BD2DEDC5C400C67505 /* ForecastCellViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		A86108B02DEB481F00C67505 /* MockNetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkSession.swift; sourceTree = "<group>"; };
 		A86108B22DEB481F00C67505 /* forecast_sample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = forecast_sample.json; sourceTree = "<group>"; };
 		A86108BB2DEB492900C67505 /* WeatherServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTests.swift; sourceTree = "<group>"; };
+		A86108BD2DEDC5C400C67505 /* ForecastCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCellViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +316,7 @@
 		A86108AD2DEB481F00C67505 /* ForecastTests */ = {
 			isa = PBXGroup;
 			children = (
+				A86108BD2DEDC5C400C67505 /* ForecastCellViewModelTests.swift */,
 				A86108BB2DEB492900C67505 /* WeatherServiceTests.swift */,
 				A86108AC2DEB481F00C67505 /* WeatherResponseTests.swift */,
 			);
@@ -499,6 +502,7 @@
 				A86108B72DEB481F00C67505 /* MockForecastCache.swift in Sources */,
 				A86108BC2DEB492900C67505 /* WeatherServiceTests.swift in Sources */,
 				A86108B82DEB481F00C67505 /* MockImageCache.swift in Sources */,
+				A86108BE2DEDC5C400C67505 /* ForecastCellViewModelTests.swift in Sources */,
 				A86108B92DEB481F00C67505 /* MockNetworkSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
