@@ -84,6 +84,31 @@ final class WeatherResponseTests: XCTestCase {
         }
     }
     
+    func test_decodingForecastResponse_malformedJSON_throws() {
+        let malformedJSON = "{ invalid json }".data(using: .utf8)!
+        let decoder = JSONDecoder()
+        
+        XCTAssertThrowsError(
+            try decoder.decode(ForecastResponse.self, from: malformedJSON),
+            "Ожидалось, что декодирование бросит ошибку на невалидном JSON"
+        )
+    }
+    
+    func test_decodingForecastResponse_emptyForecastDay_success() throws {
+        let emptyArrayJSON = """
+            {
+              "forecast": {
+                "forecastday": []
+              }
+            }
+            """.data(using: .utf8)!
+        
+        let decoder = JSONDecoder()
+        let response = try decoder.decode(ForecastResponse.self, from: emptyArrayJSON)
+        
+        XCTAssertEqual(response.forecast.days.count, 0, "forecastday должен быть пустым")
+    }
+    
     // Helper to load JSON data from TestUtils/Resources
     private func loadJSON(named name: String) -> Data {
         let bundle = Bundle(for: type(of: self))
