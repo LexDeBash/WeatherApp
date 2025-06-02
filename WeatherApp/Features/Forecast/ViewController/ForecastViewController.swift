@@ -48,6 +48,7 @@ final class ForecastViewController: UIViewController {
         configureAppearance()
         configureTableView()
         configureLayout()
+        configureRefreshControl()
         bindViewModel()
         loadForecast()
     }
@@ -90,18 +91,26 @@ private extension ForecastViewController {
     
     func configureTableView() {
         tableView.dataSource = self
-        tableView.refreshControl = refreshControl
-
+        
         tableView.register(
             ForecastCell.self,
             forCellReuseIdentifier: ForecastCell.reuseIdentifier
         )
         
-        refreshControl.addTarget(
-            self,
-            action: #selector(didPullToRefresh),
-            for: .valueChanged
-        )
+    }
+    
+    private func configureRefreshControl() {
+        tableView.alwaysBounceVertical = true
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.refreshControl = self?.refreshControl
+        }
+        
+        let refreshAction = UIAction { [weak self] _ in
+            self?.loadForecast()
+        }
+        
+        refreshControl.addAction(refreshAction, for: .valueChanged)
     }
     
     func configureLayout() {
@@ -132,9 +141,12 @@ private extension ForecastViewController {
             case .loading:
                 activityIndicator.startAnimating()
             case .loaded:
-                activityIndicator.stopAnimating()
-                refreshControl.endRefreshing()
-                tableView.reloadData()
+                self.activityIndicator.stopAnimating()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                    self.refreshControl.endRefreshing()
+                    self.tableView.reloadData()
+                    
+                }
             case .failed(let message):
                 activityIndicator.stopAnimating()
                 refreshControl.endRefreshing()
