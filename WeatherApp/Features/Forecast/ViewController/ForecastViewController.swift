@@ -85,7 +85,6 @@ extension ForecastViewController: UITableViewDataSource {
 private extension ForecastViewController {
     func configureAppearance() {
         title = "Forecast in Moscow"
-        navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .systemBackground
     }
     

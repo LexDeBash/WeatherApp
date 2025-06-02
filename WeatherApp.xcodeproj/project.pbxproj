@@ -42,6 +42,9 @@
 		A86108BC2DEB492900C67505 /* WeatherServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108BB2DEB492900C67505 /* WeatherServiceTests.swift */; };
 		A86108BE2DEDC5C400C67505 /* ForecastCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108BD2DEDC5C400C67505 /* ForecastCellViewModelTests.swift */; };
 		A86108C02DEDE6B200C67505 /* ForecastViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108BF2DEDE6B200C67505 /* ForecastViewModelTests.swift */; };
+		A86108C22DEDFB0500C67505 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108C12DEDFB0500C67505 /* Coordinator.swift */; };
+		A86108C42DEDFB5600C67505 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108C32DEDFB5600C67505 /* AppCoordinator.swift */; };
+		A86108C62DEDFCB500C67505 /* ForecastCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86108C52DEDFCB500C67505 /* ForecastCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +99,9 @@
 		A86108BB2DEB492900C67505 /* WeatherServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTests.swift; sourceTree = "<group>"; };
 		A86108BD2DEDC5C400C67505 /* ForecastCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCellViewModelTests.swift; sourceTree = "<group>"; };
 		A86108BF2DEDE6B200C67505 /* ForecastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModelTests.swift; sourceTree = "<group>"; };
+		A86108C12DEDFB0500C67505 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A86108C32DEDFB5600C67505 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		A86108C52DEDFCB500C67505 /* ForecastCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +249,9 @@
 		A81D37842DE7892500E17A42 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				A86108C12DEDFB0500C67505 /* Coordinator.swift */,
+				A86108C32DEDFB5600C67505 /* AppCoordinator.swift */,
+				A86108C52DEDFCB500C67505 /* ForecastCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -308,13 +317,6 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		A86108AB2DEB481F00C67505 /* CoreTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreTests;
-			sourceTree = "<group>";
-		};
 		A86108AD2DEB481F00C67505 /* ForecastTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,7 +358,6 @@
 		A86108B52DEB481F00C67505 /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				A86108AB2DEB481F00C67505 /* CoreTests */,
 				A86108AD2DEB481F00C67505 /* ForecastTests */,
 				A86108B42DEB481F00C67505 /* TestUtils */,
 			);
@@ -484,14 +485,17 @@
 				A81D37712DE76B4C00E17A42 /* AppDelegate.swift in Sources */,
 				A81D37722DE76B4C00E17A42 /* SceneDelegate.swift in Sources */,
 				A81D37942DE7B23E00E17A42 /* WeatherAPIEndpoint.swift in Sources */,
+				A86108C42DEDFB5600C67505 /* AppCoordinator.swift in Sources */,
 				A86108322DE891CE00C67505 /* ForecastViewModel.swift in Sources */,
 				A81D378E2DE7ACEF00E17A42 /* WeatherServiceProtocol.swift in Sources */,
 				A86108512DE9BFB500C67505 /* ImageCache.swift in Sources */,
 				A81D37732DE76B4C00E17A42 /* ForecastViewController.swift in Sources */,
 				A81D37922DE7AFE000E17A42 /* WeatherAPIError.swift in Sources */,
+				A86108C22DEDFB0500C67505 /* Coordinator.swift in Sources */,
 				A81D37962DE7B7A500E17A42 /* ForecastResponse.swift in Sources */,
 				A86108342DE8935000C67505 /* ForecastViewModelProtocol.swift in Sources */,
 				A86108592DE9F7BF00C67505 /* ForecastCache.swift in Sources */,
+				A86108C62DEDFCB500C67505 /* ForecastCoordinator.swift in Sources */,
 				A86108552DE9DE9B00C67505 /* UIView+AutoLayout.swift in Sources */,
 				A86108482DE90E6400C67505 /* Metrics.swift in Sources */,
 			);
