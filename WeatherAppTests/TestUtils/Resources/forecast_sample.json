@@ -1,0 +1,66 @@
+{
+  "forecast": {
+    "forecastday": [
+      {
+        "date": "2025-05-30",
+        "day": {
+          "avgtemp_c": 21.5,
+          "maxwind_kph": 12.3,
+          "avghumidity": 55,
+          "condition": {
+            "text": "Cloudy",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/119.png"
+          }
+        }
+      },
+      {
+        "date": "2025-05-31",
+        "day": {
+          "avgtemp_c": 19.8,
+          "maxwind_kph": 8.6,
+          "avghumidity": 61,
+          "condition": {
+            "text": "Partly cloudy",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png"
+          }
+        }
+      },
+      {
+        "date": "2025-06-01",
+        "day": {
+          "avgtemp_c": 17.2,
+          "maxwind_kph": 10.0,
+          "avghumidity": 65,
+          "condition": {
+            "text": "Sunny",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+          }
+        }
+      },
+      {
+        "date": "2025-06-02",
+        "day": {
+          "avgtemp_c": 18.0,
+          "maxwind_kph": 9.5,
+          "avghumidity": 70,
+          "condition": {
+            "text": "Rain",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/296.png"
+          }
+        }
+      },
+      {
+        "date": "2025-06-03",
+        "day": {
+          "avgtemp_c": 20.1,
+          "maxwind_kph": 11.2,
+          "avghumidity": 58,
+          "condition": {
+            "text": "Overcast",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/122.png"
+          }
+        }
+      }
+    ]
+  }
+}
