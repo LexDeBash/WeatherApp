@@ -37,7 +37,14 @@ struct ForecastCellViewModel {
         condition = forecastDay.dayForecast.condition.text
         averageTemperature = String(format: "%.0f°C", forecastDay.dayForecast.averageTemperature)
         windSpeed = String(format: "Wind speed: %.1f км/ч", forecastDay.dayForecast.maxWindSpeed)
-        humidity = String(format: "Humidity: %d%%", forecastDay.dayForecast.averageHumidity)
-        iconURL = URL(string: "https:\(forecastDay.dayForecast.condition.icon)")
+        humidity = "Humidity: \(forecastDay.dayForecast.averageHumidity.formatted())%"
+        
+        let iconPath = forecastDay.dayForecast.condition.icon
+        
+        if iconPath.starts(with: "//") {
+            iconURL = URL(string: "https:\(iconPath)")
+        } else {
+            iconURL = nil
+        }
     }
 }

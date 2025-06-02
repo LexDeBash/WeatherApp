@@ -13,14 +13,14 @@ final class WeatherService {
     private let apiKey: String
     
     // MARK: - Dependencies
-    private let session: URLSession
+    private let session: NetworkSession
     private let imageCache: ImageCacheProtocol
     private let forecastCache: ForecastCacheProtocol
     
     // MARK: - Initializers
     init(
         apiKey: String,
-        session: URLSession,
+        session: NetworkSession,
         imageCache: ImageCacheProtocol,
         forecastCache: ForecastCacheProtocol
     ) {

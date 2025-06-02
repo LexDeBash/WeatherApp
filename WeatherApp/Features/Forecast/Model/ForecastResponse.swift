@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ForecastResponse: Decodable {
+struct ForecastResponse: Decodable, Equatable {
     let forecast: Forecast
 }
 
-struct Forecast: Decodable {
+struct Forecast: Decodable, Equatable {
     let days: [ForecastDay]
 }
 
@@ -21,7 +21,7 @@ private extension Forecast {
     }
 }
 
-struct ForecastDay: Decodable {
+struct ForecastDay: Decodable, Equatable {
     let date: String
     let dayForecast: DayForecast
 }
@@ -33,7 +33,7 @@ private extension ForecastDay {
     }
 }
 
-struct DayForecast: Decodable {
+struct DayForecast: Decodable, Equatable {
     let averageTemperature: Double
     let maxWindSpeed: Double
     let averageHumidity: Double
@@ -49,7 +49,7 @@ private extension DayForecast {
     }
 }
 
-struct WeatherCondition: Decodable {
+struct WeatherCondition: Decodable, Equatable {
     let text: String
     let icon: String
 }

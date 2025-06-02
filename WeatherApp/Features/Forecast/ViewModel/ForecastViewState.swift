@@ -7,7 +7,7 @@
 
 
 /// Состояние экрана прогноза погоды
-enum ForecastViewState {
+enum ForecastViewState: Equatable {
     /// Ожидание первого действия (например, экран пуст)
     case idle
 
